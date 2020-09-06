@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class Main extends PApplet {
@@ -10,9 +11,12 @@ public class Main extends PApplet {
 	}
 
 	static Pacman pacman;
+	Score score;
+	String scoreString;
 	
 	public int move;
 	PImage mazeImage;
+	PFont MagicHat;
 
 	ArrayList<Cookie> cookies;
 
@@ -124,6 +128,20 @@ public class Main extends PApplet {
 		println(pacmanMX);*/
 
 		fill(255);
+		
+		int scoreNumber = 0;
+		
+		for (int fila = 0; fila < 21; fila++) {
+			for (int col = 0; col < 31; col++) {
+				
+				if (maze[fila][col] == 2) {
+
+					int scoreDisplay = scoreNumber + 1;
+					scoreString = Integer.toString(scoreDisplay);
+					score.centeredScore(scoreString);
+				}
+			}
+		}
 	}
 
 	public void keyPressed() {
