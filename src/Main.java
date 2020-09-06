@@ -56,6 +56,7 @@ public class Main extends PApplet {
 		move = 1;
 		
 		mazeImage = loadImage("./images/maze.jpg");
+		MagicHat = loadFont("./fonts/MagicHat.vlw");
 
 		cookies = new ArrayList<Cookie>();
 
@@ -129,19 +130,28 @@ public class Main extends PApplet {
 
 		fill(255);
 		
-		int scoreNumber = 0;
+		int scoreNumber = -1;
 		
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 				
 				if (maze[fila][col] == 2) {
 
-					int scoreDisplay = scoreNumber + 1;
-					scoreString = Integer.toString(scoreDisplay);
-					score.centeredScore(scoreString);
+					scoreNumber++;
 				}
+	
+				scoreString = Integer.toString(scoreNumber);
+				//println(scoreNumber);
 			}
 		}
+		
+		textAlign(CENTER);
+		noStroke();
+		textFont(MagicHat);
+		fill(255);
+		text(scoreString, width/2, 80);
+		
+		//score.centeredScore(scoreString);
 	}
 
 	public void keyPressed() {
