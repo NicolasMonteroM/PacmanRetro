@@ -5,14 +5,16 @@ public class Pacman {
 	int size;
 	PApplet app;
 	int lives;
+	int speed;
 
 	public Pacman(PApplet app) {
 		size = 20;
 		this.app = app;
 		lives = 3;
+		speed = 5;
 	}
 
-	public void crear(int posX, int posY) {
+	public void create(int posX, int posY) {
 		app.ellipse(posX, posY, size, size);
 	}
 
