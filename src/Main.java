@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Main extends PApplet {
 
@@ -11,6 +12,7 @@ public class Main extends PApplet {
 	static Pacman pacman;
 	
 	public int move;
+	PImage mazeImage;
 
 	ArrayList<Cookie> cookies;
 
@@ -40,7 +42,7 @@ public class Main extends PApplet {
 	public int pacmanMX;
 
 	public void settings() {
-		size(1240, 840);
+		size(930, 630);
 	}
 
 	public void setup() {
@@ -48,6 +50,8 @@ public class Main extends PApplet {
 		pacman = new Pacman(this);
 
 		move = 1;
+		
+		mazeImage = loadImage("./images/maze.jpg");
 
 		cookies = new ArrayList<Cookie>();
 
@@ -63,14 +67,14 @@ public class Main extends PApplet {
 
 	public void draw() {
 
-		background(100);
+		image(mazeImage, 0,0, 930, 630);
 
 		int posPacX, posPacY;
 
-		posPacX = pacmanMX * 40;
-		posPacY = pacmanMY * 40;
+		posPacX = pacmanMX * 30;
+		posPacY = pacmanMY * 30;
 
-		for (int fila = 0; fila < 21; fila++) {
+	/*	for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 
 				if (maze[fila][col] == 0) {
@@ -79,26 +83,26 @@ public class Main extends PApplet {
 				}
 
 				if (maze[fila][col] == 1) {
-					stroke(1);
+					noStroke();
 					fill(255);
 				}
 
 				if (maze[fila][col] == 2) {
 					noStroke();
-					fill(40, 0, 0);
+					fill(40);
 				}
 
 				rect(col * 40, fila * 40, 40, 40);
 
 			}
-		}
+		}*/
 
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 
 				if (maze[fila][col] == 0) {
 					Cookie cookie = new Cookie(this);
-					cookie.crear(col * 40, fila * 40);
+					cookie.crear(col * 30, fila * 30);
 
 					if (cookie.x == posPacX && cookie.y == posPacY) {
 						cookies.add(cookie);
@@ -109,12 +113,12 @@ public class Main extends PApplet {
 
 		for (int i = 0; i < cookies.size(); i++) {
 			Cookie cookie = cookies.get(i);
-			maze[cookie.y / 40][cookie.x / 40] = 2;
+			maze[cookie.y / 30][cookie.x / 30] = 2;
 		}
 
 		fill(255, 255, 0);
 		
-		pacman.create(posPacX + 20, posPacY + 20);
+		pacman.create(posPacX + 15, posPacY + 15);
 		
 		/*pacman.movement(move, pacmanMX, pacmanMY, maze);
 		println(pacmanMX);*/

@@ -8,13 +8,14 @@ public class Cookie {
 	PApplet app;
 
 	public Cookie(PApplet app) {
-		size = 10;
+		size = 3;
 		this.app = app;
 	}
 
 	public void crear(int posX, int posY) {
-		app.fill(255);
-		app.ellipse(posX + 20, posY + 20, size, size);
+		app.noStroke();
+		app.fill(255,0,244);
+		app.ellipse(posX + 15, posY + 15, size, size);
 		x = posX;
 		y = posY;
 	}

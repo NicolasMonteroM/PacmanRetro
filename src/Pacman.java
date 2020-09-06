@@ -8,7 +8,7 @@ public class Pacman {
 	int speed;
 
 	public Pacman(PApplet app) {
-		size = 20;
+		size = 15;
 		this.app = app;
 		lives = 3;
 		speed = 5;

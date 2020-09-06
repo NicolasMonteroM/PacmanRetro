@@ -9,7 +9,7 @@ public class Enemie {
 	boolean state;
 	
 	public Enemie(PApplet app) {
-		size = 20;
+		size = 10;
 		this.app = app;
 	}
 	
