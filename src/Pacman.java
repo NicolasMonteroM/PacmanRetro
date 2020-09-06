@@ -20,27 +20,29 @@ public class Pacman {
 
 	public void movement(int dir, int MX, int MY, int[][] maze) {
 
-		if (dir == 1) {
-			if (MX - 1 > -1 && (maze[MY][MX - 1] == 0 || maze[MY][MX - 1] == 2)) {
-				MX--;
+		if (app.keyPressed) {
+			if (app.keyCode == app.LEFT) {
+				if (MX - 1 > -1 && (maze[MY][MX - 1] == 0 || maze[MY][MX - 1] == 2)) {
+					MX--;
+				}
 			}
-		}
 
-		if (dir == 2) {
-			if (MY - 1 > -1 && (maze[MY - 1][MX] == 0 || maze[MY - 1][MX] == 2)) {
-				MY--;
+			if (app.keyCode == app.UP) {
+				if (MY - 1 > -1 && (maze[MY - 1][MX] == 0 || maze[MY - 1][MX] == 2)) {
+					MY--;
+				}
 			}
-		}
 
-		if (dir == 3) {
-			if (MX + 1 < 31 && (maze[MY][MX + 1] == 0 || maze[MY][MX + 1] == 2)) {
-				MX++;
+			if (app.keyCode == app.RIGHT) {
+				if (MX + 1 < 31 && (maze[MY][MX + 1] == 0 || maze[MY][MX + 1] == 2)) {
+					MX++;
+				}
 			}
-		}
 
-		if (dir == 4) {
-			if (MY + 1 < 21 && (maze[MY + 1][MX] == 0 || maze[MY + 1][MX] == 2)) {
-				MY++;
+			if (app.keyCode == app.DOWN) {
+				if (MY + 1 < 21 && (maze[MY + 1][MX] == 0 || maze[MY + 1][MX] == 2)) {
+					MY++;
+				}
 			}
 		}
 	}

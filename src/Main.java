@@ -10,7 +10,13 @@ public class Main extends PApplet {
 		PApplet.main(Main.class.getName());
 	}
 
+	static Enemie enemie1;
+	static Enemie enemie2;
+	static Enemie enemie3;
+	static Enemie enemie4;
+	
 	static Pacman pacman;
+	
 	Score score;
 	String scoreString;
 	
@@ -44,6 +50,15 @@ public class Main extends PApplet {
 
 	public int pacmanMY;
 	public int pacmanMX;
+	public int enemieMX1;
+	public int enemieMY1;
+	public int enemieMX2;
+	public int enemieMY2;
+	public int enemieMX3;
+	public int enemieMY3;
+	public int enemieMX4;
+	public int enemieMY4;
+	public int scoreNumber;
 
 	public void settings() {
 		size(930, 630);
@@ -52,7 +67,11 @@ public class Main extends PApplet {
 	public void setup() {
 
 		pacman = new Pacman(this);
-
+		enemie1 = new Enemie(this);
+		enemie2 = new Enemie(this);
+		enemie3 = new Enemie(this);
+		enemie4 = new Enemie(this);
+		
 		move = 1;
 		
 		mazeImage = loadImage("./images/maze.jpg");
@@ -63,9 +82,22 @@ public class Main extends PApplet {
 		for (int matY = 0; matY < 21; matY++) {
 			for (int matX = 0; matX < 31; matX++) {
 
+				//Initial PacMan location
 				pacmanMY = 14;
 				pacmanMX = 15;
+				
+				//Enemies' initial locations
+				enemieMX1 = 11;
+				enemieMY1 = 7;
 
+				enemieMX2 = 10;
+				enemieMY2 = 12;
+				
+				enemieMX3 = 1;
+				enemieMY3 = 2;
+				
+				enemieMX4 = 1;
+				enemieMY4 = 2;
 			}
 		}
 	}
@@ -75,10 +107,24 @@ public class Main extends PApplet {
 		image(mazeImage, 0,0, 930, 630);
 
 		int posPacX, posPacY;
+		int posEnemieX1, posEnemieY1, posEnemieX2, posEnemieY2, posEnemieX3, posEnemieY3, posEnemieX4, posEnemieY4;
 
 		posPacX = pacmanMX * 30;
 		posPacY = pacmanMY * 30;
+		
+		posEnemieX1 = enemieMX1 * 30;
+		posEnemieY1 = enemieMY1 * 30;
+		
+		posEnemieX2 = enemieMX2 * 30;
+		posEnemieY2 = enemieMY2 * 30;
+		
+		posEnemieX3 = enemieMX3 * 30;
+		posEnemieY3 = enemieMY3 * 30;
+		
+		posEnemieX4 = enemieMX4 * 30;
+		posEnemieY4 = enemieMY4 * 30;
 
+		//grid
 	/*	for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 
@@ -91,17 +137,17 @@ public class Main extends PApplet {
 					noStroke();
 					fill(255);
 				}
-
+				
 				if (maze[fila][col] == 2) {
 					noStroke();
 					fill(40);
 				}
-
+				
 				rect(col * 40, fila * 40, 40, 40);
-
 			}
 		}*/
-
+		
+		//creating cookies where there's no barrier
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 
@@ -116,21 +162,29 @@ public class Main extends PApplet {
 			}
 		}
 
+		//changing grid state when getting each cookie
 		for (int i = 0; i < cookies.size(); i++) {
 			Cookie cookie = cookies.get(i);
 			maze[cookie.y / 30][cookie.x / 30] = 2;
 		}
-
-		fill(255, 255, 0);
 		
+		//PacMan creation
+		fill(255, 255, 0);
 		pacman.create(posPacX + 15, posPacY + 15);
 		
-		/*pacman.movement(move, pacmanMX, pacmanMY, maze);
+		//Enemies creation
+		fill(255, 0, 0);
+		enemie1.create(posEnemieX1 + 15, posEnemieY1 + 15);
+		enemie2.create(posEnemieX2 + 15, posEnemieY2 + 15);
+		enemie3.create(posEnemieX3 + 15, posEnemieY3 + 15);
+		enemie4.create(posEnemieX4 + 15, posEnemieY4 + 15);
+		
+		/*
 		println(pacmanMX);*/
 
 		fill(255);
 		
-		int scoreNumber = -1;
+		scoreNumber = -1;
 		
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
@@ -147,6 +201,7 @@ public class Main extends PApplet {
 		
 		textAlign(CENTER);
 		noStroke();
+		textSize(20);
 		textFont(MagicHat);
 		fill(255);
 		text(scoreString, width/2, 80);
@@ -155,6 +210,7 @@ public class Main extends PApplet {
 	}
 
 	public void keyPressed() {
+		
 
 	/*	if (keyCode == LEFT) {
 			move = 1;

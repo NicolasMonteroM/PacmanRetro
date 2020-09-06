@@ -9,10 +9,19 @@ public class Enemie {
 	boolean state;
 	
 	public Enemie(PApplet app) {
-		size = 10;
+		size = 15;
 		this.app = app;
 	}
 	
+	public void create(int posX, int posY) {
+		
+		app.ellipse(posX, posY, size, size);
+		
+	}
 	
+	public void vulnerable() {
+		
+		
+	}
 
 }
