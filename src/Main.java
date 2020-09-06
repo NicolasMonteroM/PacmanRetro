@@ -9,6 +9,7 @@ public class Main extends PApplet {
 	}
 
 	static Pacman pacman;
+	public int move;
 
 	ArrayList<Cookie> cookies;
 
@@ -18,14 +19,14 @@ public class Main extends PApplet {
 			{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
 			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 },
 			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
-			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
+			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
-			{ 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 },
+			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+			{ 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 },
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
@@ -34,8 +35,8 @@ public class Main extends PApplet {
 			{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
 			{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 } };
 
-	int mazeMY;
-	int mazeMX;
+	public int pacmanMY;
+	public int pacmanMX;
 
 	public void settings() {
 		size(1240, 840);
@@ -45,14 +46,16 @@ public class Main extends PApplet {
 
 		pacman = new Pacman(this);
 
+		move = 1;
+
 		cookies = new ArrayList<Cookie>();
 
 		for (int matY = 0; matY < 21; matY++) {
 			for (int matX = 0; matX < 31; matX++) {
-				if (maze[matY][matX] == 0) {
-					mazeMY = matY;
-					mazeMX = matX;
-				}
+
+				pacmanMY = 14;
+				pacmanMX = 14;
+
 			}
 		}
 	}
@@ -63,8 +66,8 @@ public class Main extends PApplet {
 
 		int posPacX, posPacY;
 
-		posPacX = mazeMX * 40;
-		posPacY = mazeMY * 40;
+		posPacX = pacmanMX * 40;
+		posPacY = pacmanMY * 40;
 
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
@@ -81,7 +84,7 @@ public class Main extends PApplet {
 
 				if (maze[fila][col] == 2) {
 					noStroke();
-					fill(40);
+					fill(40, 0, 0);
 				}
 
 				rect(col * 40, fila * 40, 40, 40);
@@ -94,7 +97,7 @@ public class Main extends PApplet {
 
 				if (maze[fila][col] == 0) {
 					Cookie cookie = new Cookie(this);
-					cookie.crear(fila * 40, col * 40);
+					cookie.crear(col * 40, fila * 40);
 
 					if (cookie.x == posPacX && cookie.y == posPacY) {
 						cookies.add(cookie);
@@ -105,43 +108,46 @@ public class Main extends PApplet {
 
 		for (int i = 0; i < cookies.size(); i++) {
 			Cookie cookie = cookies.get(i);
-			maze[cookie.x / 40][cookie.y / 40] = 2;
+			maze[cookie.y / 40][cookie.x / 40] = 2;
 		}
 
 		fill(255, 255, 0);
-
+		
 		pacman.crear(posPacX + 20, posPacY + 20);
+		
+		/*pacman.movement(move, pacmanMX, pacmanMY, maze);
+		println(pacmanMX);*/
 
 		fill(255);
-		
-
 	}
 
 	public void keyPressed() {
 
-		// Movement
-		if (keyCode == LEFT) {
-			if (mazeMX - 1 > -1 && (maze[mazeMX - 1][mazeMY] == 0 || maze[mazeMX - 1][mazeMY] == 2)) {
-				mazeMX--;
-			}
+	/*	if (keyCode == LEFT) {
+			move = 1;
 		}
-
+		
 		if (keyCode == UP) {
-			if (mazeMY - 1 > -1 && (maze[mazeMX][mazeMY - 1] == 0 || maze[mazeMX][mazeMY - 1] == 2)) {
-				mazeMY--;
-			}
+			move = 2;
 		}
-
+		
 		if (keyCode == RIGHT) {
-			if (mazeMX + 1 < maze.length && (maze[mazeMX + 1][mazeMY] == 0 || maze[mazeMX + 1][mazeMY] == 2)) {
-				mazeMX++;
-			}
+			move = 3;
 		}
-
+		
 		if (keyCode == DOWN) {
-			if (mazeMY + 1 < maze.length && (maze[mazeMX][mazeMY + 1] == 0 || maze[mazeMX][mazeMY + 1] == 2)) {
-				mazeMY++;
-			}
-		}
+			move = 4;
+		}*/
+		
+		// Movement
+		
+		  if (keyCode == LEFT) { if (pacmanMX - 1 > -1 && (maze[pacmanMY][pacmanMX - 1] == 0 || maze[pacmanMY][pacmanMX - 1] == 2)) { pacmanMX--; } }
+		  
+		  if (keyCode == UP) { if (pacmanMY - 1 > -1 && (maze[pacmanMY - 1][pacmanMX] == 0 || maze[pacmanMY - 1][pacmanMX] == 2)) { pacmanMY--; } }
+		  
+		  if (keyCode == RIGHT) { if (pacmanMX + 1 < 31 && (maze[pacmanMY][pacmanMX + 1] == 0 || maze[pacmanMY][pacmanMX + 1] == 2)) { pacmanMX++; } }
+		  
+		  if (keyCode == DOWN) { if (pacmanMY + 1 < 21 && (maze[pacmanMY + 1][pacmanMX]== 0 || maze[pacmanMY + 1][pacmanMX] == 2)) { pacmanMY++; } }
+		 
 	}
 }
