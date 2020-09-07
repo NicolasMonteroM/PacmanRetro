@@ -1,8 +1,13 @@
+import processing.core.PApplet;
 
-public class BlackEnemie {
+public class BlackEnemie extends Enemie{
 
-	public BlackEnemie() {
-		// TODO Auto-generated constructor stub
+	public BlackEnemie(PApplet app, int posX, int posY) {
+		super (app, posX, posY);
+	}
+
+	public void create(int posX, int posY) {
+
 	}
 
 }

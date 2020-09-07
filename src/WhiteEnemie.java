@@ -1,8 +1,12 @@
+import processing.core.PApplet;
 
-public class WhiteEnemie {
+public class WhiteEnemie extends Enemie{
 
-	public WhiteEnemie() {
-		// TODO Auto-generated constructor stub
+	public WhiteEnemie(PApplet app, int posX, int posY) {
+		super (app, posX, posY);
 	}
 
+	public void create(int posX, int posY) {
+
+	}
 }

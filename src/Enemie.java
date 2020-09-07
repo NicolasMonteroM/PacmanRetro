@@ -2,16 +2,16 @@ import processing.core.PApplet;
 
 public class Enemie {
 
-	int size;
-	int x;
-	int y;
+	public int size;
+	public int x;
+	public int y;
 	PApplet app;
 	boolean state;
 
 	public Enemie(PApplet app, int posX, int posY) {
-		x = posX;
-		y = posY;
-		size = 15;
+		this.x = posX;
+		this.y = posY;
+		this.size = 15;
 		this.app = app;
 	}
 

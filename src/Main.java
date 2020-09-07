@@ -17,6 +17,7 @@ public class Main extends PApplet {
 
 	public Pacman pacman;
 
+	Timer sw;
 	Score score;
 	String scoreString;
 
@@ -67,7 +68,7 @@ public class Main extends PApplet {
 
 	public void setup() {
 
-		move = 1;
+		sw = new Timer();
 
 		mazeImage = loadImage("./images/maze.jpg");
 		MagicHat = loadFont("./fonts/MagicHat.vlw");
@@ -108,7 +109,9 @@ public class Main extends PApplet {
 	}
 
 	public void draw() {
-
+		
+		//sw.start();
+		
 		image(mazeImage, 0, 0, 930, 630);
 
 		int posPacX, posPacY;
@@ -447,6 +450,12 @@ public class Main extends PApplet {
 	public void restart() {
 
 		setup();
+		
+	}
+	
+	public void timer() {
+		
+		
 		
 	}
 
