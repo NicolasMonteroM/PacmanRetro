@@ -211,10 +211,12 @@ public class Main extends PApplet {
 		
 		//enemies behaviour
 		//LEFT
-		boolean turnLeft;
-		boolean turnRight;
-		boolean goUp;
-		boolean goDown;
+		boolean turnLeft = false;
+		boolean turnRight = false;
+		boolean goUp = false;
+		boolean goDown = false;
+		
+		
 		
 		if (enemieMX1 - 1 > -1 && (maze[enemieMY1][enemieMX1 - 1] == 0 || maze[enemieMY1][enemieMX1 - 1] == 2)) { 
 			
@@ -223,20 +225,28 @@ public class Main extends PApplet {
 		
 		if (enemieMY1 - 1 > -1 && (maze[enemieMY1 - 1][enemieMX1] == 0 || maze[enemieMY1 - 1][enemieMX1] == 2)) { 
 			
-			goUp = true; 	
+			/*if(frameCount % 10 == 0){
+				enemieMY1__; 
+			}	*/
 		}
+		
 		
 		if (enemieMX1 + 1 < 31 && (maze[enemieMY1][enemieMX1 + 1] == 0 || maze[enemieMY1][enemieMX1 + 1] == 2)) { 
 			
-			turnRight = true; 
-		}
+			if(frameCount % 10 == 0){
+			enemieMX1++; 
+		}}
 		
 		if (enemieMY1 + 1 < 21 && (maze[enemieMY1 + 1][enemieMX1]== 0 || maze[enemieMY1 + 1][enemieMX1] == 2)) { 
 			  
-			enemieMY1++;   
+			if(frameCount % 10 == 0){
+			enemieMY1++;
+		}}
+		
+		int left;
+		if (turnLeft) {
+			left = 1;
 		}
-		
-		
 		
 		
 	}
