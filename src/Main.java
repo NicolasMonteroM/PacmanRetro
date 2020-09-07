@@ -93,11 +93,11 @@ public class Main extends PApplet {
 				enemieMX2 = 10;
 				enemieMY2 = 12;
 				
-				enemieMX3 = 1;
-				enemieMY3 = 2;
+				enemieMX3 = 19;
+				enemieMY3 = 7;
 				
-				enemieMX4 = 1;
-				enemieMY4 = 2;
+				enemieMX4 = 20;
+				enemieMY4 = 12;
 			}
 		}
 	}
@@ -162,7 +162,7 @@ public class Main extends PApplet {
 			}
 		}
 
-		//changing grid state when getting each cookie
+		//changing grid state when eating each cookie
 		for (int i = 0; i < cookies.size(); i++) {
 			Cookie cookie = cookies.get(i);
 			maze[cookie.y / 30][cookie.x / 30] = 2;
@@ -186,6 +186,7 @@ public class Main extends PApplet {
 		
 		scoreNumber = -1;
 		
+		//Score number
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 				
@@ -199,14 +200,45 @@ public class Main extends PApplet {
 			}
 		}
 		
+		
 		textAlign(CENTER);
 		noStroke();
-		textSize(20);
 		textFont(MagicHat);
 		fill(255);
 		text(scoreString, width/2, 80);
 		
 		//score.centeredScore(scoreString);
+		
+		//enemies behaviour
+		//LEFT
+		boolean turnLeft;
+		boolean turnRight;
+		boolean goUp;
+		boolean goDown;
+		
+		if (enemieMX1 - 1 > -1 && (maze[enemieMY1][enemieMX1 - 1] == 0 || maze[enemieMY1][enemieMX1 - 1] == 2)) { 
+			
+			turnLeft = true;
+		}
+		
+		if (enemieMY1 - 1 > -1 && (maze[enemieMY1 - 1][enemieMX1] == 0 || maze[enemieMY1 - 1][enemieMX1] == 2)) { 
+			
+			goUp = true; 	
+		}
+		
+		if (enemieMX1 + 1 < 31 && (maze[enemieMY1][enemieMX1 + 1] == 0 || maze[enemieMY1][enemieMX1 + 1] == 2)) { 
+			
+			turnRight = true; 
+		}
+		
+		if (enemieMY1 + 1 < 21 && (maze[enemieMY1 + 1][enemieMX1]== 0 || maze[enemieMY1 + 1][enemieMX1] == 2)) { 
+			  
+			enemieMY1++;   
+		}
+		
+		
+		
+		
 	}
 
 	public void keyPressed() {
