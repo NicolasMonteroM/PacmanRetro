@@ -99,14 +99,12 @@ public class Main extends PApplet {
 		for (int fila = 0; fila < 21; fila++) {
 			for (int col = 0; col < 31; col++) {
 
-				if (maze[fila][col] == 0) {
-					Cookie cookie = new Cookie(this);
-					cookie.crear(col * 30, fila * 30);
+				if (maze[fila][col] == 2) {
+					maze[fila][col] = 0;
 
 				}
 			}
 		}
-
 	}
 
 	public void draw() {
@@ -253,7 +251,7 @@ public class Main extends PApplet {
 			moveDown = true;
 		}
 
-		if (frameCount % 10 == 0) {
+		if (frameCount % 3 == 0) {
 
 			if (moveLeft && randomDirection == 0) {
 				enemieMX1--;
@@ -288,7 +286,7 @@ public class Main extends PApplet {
 			moveDown1 = true;
 		}
 
-		if (frameCount % 10 == 0) {
+		if (frameCount % 3 == 0) {
 
 			if (moveLeft1 && randomDirection1 == 0) {
 				enemieMX2--;
@@ -323,7 +321,7 @@ public class Main extends PApplet {
 			moveDown2 = true;
 		}
 
-		if (frameCount % 10 == 0) {
+		if (frameCount % 3 == 0) {
 
 			if (moveLeft2 && randomDirection2 == 0) {
 				enemieMX3--;
@@ -358,7 +356,7 @@ public class Main extends PApplet {
 			moveDown3 = true;
 		}
 
-		if (frameCount % 10 == 0) {
+		if (frameCount % 3 == 0) {
 
 			if (moveLeft3 && randomDirection3 == 0) {
 				enemieMX4--;
@@ -435,6 +433,15 @@ public class Main extends PApplet {
 			restart();
 		}
 
+		if (enemieMX3 == pacmanMX && enemieMY3 == pacmanMY) {
+
+			restart();
+		}
+
+		if (enemieMX4 == pacmanMX && enemieMY4 == pacmanMY) {
+
+			restart();
+		}
 	}
 
 	public void restart() {
