@@ -18,4 +18,8 @@ public class Pacman {
 		app.ellipse(posX, posY, size, size);
 	}
 
+	public void dead() {
+		
+		
+	}
 }

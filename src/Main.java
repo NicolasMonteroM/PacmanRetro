@@ -95,6 +95,17 @@ public class Main extends PApplet {
 				enemieMY4 = 12;
 			}
 		}
+		
+		for (int fila = 0; fila < 21; fila++) {
+			for (int col = 0; col < 31; col++) {
+
+				if (maze[fila][col] == 0) {
+					Cookie cookie = new Cookie(this);
+					cookie.crear(col * 30, fila * 30);
+
+				}
+			}
+		}
 
 	}
 
@@ -122,9 +133,9 @@ public class Main extends PApplet {
 
 		pacman = new Pacman(this);
 		enemie1 = new Enemie(this, enemieMX1, enemieMY1);
-		// enemie2 = new Enemie(this, enemieMX2, enemieMY2);
-		// enemie3 = new Enemie(this, enemieMX3, enemieMY3);
-		// enemie4 = new Enemie(this, enemieMX4, enemieMY4);
+		enemie2 = new Enemie(this, enemieMX2, enemieMY2);
+		enemie3 = new Enemie(this, enemieMX3, enemieMY3);
+		enemie4 = new Enemie(this, enemieMX4, enemieMY4);
 
 		// grid
 		/*
@@ -168,11 +179,9 @@ public class Main extends PApplet {
 		fill(255, 0, 0);
 
 		enemie1.create(posEnemieX1 + 15, posEnemieY1 + 15);
-		/*
-		 * enemie2.create(posEnemieX2 + 15, posEnemieY2 + 15);
-		 * enemie3.create(posEnemieX3 + 15, posEnemieY3 + 15);
-		 * enemie4.create(posEnemieX4 + 15, posEnemieY4 + 15);
-		 */
+		enemie2.create(posEnemieX2 + 15, posEnemieY2 + 15);
+		enemie3.create(posEnemieX3 + 15, posEnemieY3 + 15);
+		enemie4.create(posEnemieX4 + 15, posEnemieY4 + 15);
 
 		fill(255);
 
@@ -207,101 +216,236 @@ public class Main extends PApplet {
 
 		int randomDirection = (int) (Math.random() * 4);
 
-		if (enemieMX1 - 1 > -1 && (maze[enemieMY1][enemieMX1 - 1] == 0 || maze[enemieMY1][enemieMX1 - 1] == 2)) {
+		boolean moveLeft1 = false;
+		boolean moveRight1 = false;
+		boolean moveUp1 = false;
+		boolean moveDown1 = false;
 
+		int randomDirection1 = (int) (Math.random() * 4);
+
+		boolean moveLeft2 = false;
+		boolean moveRight2 = false;
+		boolean moveUp2 = false;
+		boolean moveDown2 = false;
+
+		int randomDirection2 = (int) (Math.random() * 4);
+
+		boolean moveLeft3 = false;
+		boolean moveRight3 = false;
+		boolean moveUp3 = false;
+		boolean moveDown3 = false;
+
+		int randomDirection3 = (int) (Math.random() * 4);
+
+		if (enemieMX1 - 1 > -1 && (maze[enemieMY1][enemieMX1 - 1] == 0 || maze[enemieMY1][enemieMX1 - 1] == 2)) {
 			moveLeft = true;
 		}
 
 		if (enemieMY1 - 1 > -1 && (maze[enemieMY1 - 1][enemieMX1] == 0 || maze[enemieMY1 - 1][enemieMX1] == 2)) {
-
 			moveUp = true;
 		}
 
 		if (enemieMX1 + 1 < 31 && (maze[enemieMY1][enemieMX1 + 1] == 0 || maze[enemieMY1][enemieMX1 + 1] == 2)) {
-
 			moveRight = true;
 		}
 
 		if (enemieMY1 + 1 < 21 && (maze[enemieMY1 + 1][enemieMX1] == 0 || maze[enemieMY1 + 1][enemieMX1] == 2)) {
-
 			moveDown = true;
 		}
 
-		if (frameCount % 5 == 0) {
+		if (frameCount % 10 == 0) {
 
 			if (moveLeft && randomDirection == 0) {
-
 				enemieMX1--;
 			}
 
 			if (moveRight && randomDirection == 1) {
-
 				enemieMX1++;
 			}
-			if (moveUp && randomDirection == 2) {
 
+			if (moveUp && randomDirection == 2) {
 				enemieMY1--;
 			}
-			if (moveDown && randomDirection == 3) {
 
+			if (moveDown && randomDirection == 3) {
 				enemieMY1++;
 			}
 		}
 
+		if (enemieMX2 - 1 > -1 && (maze[enemieMY2][enemieMX2 - 1] == 0 || maze[enemieMY2][enemieMX2 - 1] == 2)) {
+			moveLeft1 = true;
+		}
+
+		if (enemieMY2 - 1 > -1 && (maze[enemieMY2 - 1][enemieMX2] == 0 || maze[enemieMY2 - 1][enemieMX2] == 2)) {
+			moveUp1 = true;
+		}
+
+		if (enemieMX2 + 1 < 31 && (maze[enemieMY2][enemieMX2 + 1] == 0 || maze[enemieMY2][enemieMX2 + 1] == 2)) {
+			moveRight1 = true;
+		}
+
+		if (enemieMY2 + 1 < 21 && (maze[enemieMY2 + 1][enemieMX2] == 0 || maze[enemieMY2 + 1][enemieMX2] == 2)) {
+			moveDown1 = true;
+		}
+
+		if (frameCount % 10 == 0) {
+
+			if (moveLeft1 && randomDirection1 == 0) {
+				enemieMX2--;
+			}
+
+			if (moveRight1 && randomDirection1 == 1) {
+				enemieMX2++;
+			}
+
+			if (moveUp1 && randomDirection1 == 2) {
+				enemieMY2--;
+			}
+
+			if (moveDown1 && randomDirection1 == 3) {
+				enemieMY2++;
+			}
+		}
+
+		if (enemieMX3 - 1 > -1 && (maze[enemieMY3][enemieMX3 - 1] == 0 || maze[enemieMY3][enemieMX3 - 1] == 2)) {
+			moveLeft2 = true;
+		}
+
+		if (enemieMY3 - 1 > -1 && (maze[enemieMY3 - 1][enemieMX3] == 0 || maze[enemieMY3 - 1][enemieMX3] == 2)) {
+			moveUp2 = true;
+		}
+
+		if (enemieMX3 + 1 < 31 && (maze[enemieMY3][enemieMX3 + 1] == 0 || maze[enemieMY3][enemieMX3 + 1] == 2)) {
+			moveRight2 = true;
+		}
+
+		if (enemieMY3 + 1 < 21 && (maze[enemieMY3 + 1][enemieMX3] == 0 || maze[enemieMY3 + 1][enemieMX3] == 2)) {
+			moveDown2 = true;
+		}
+
+		if (frameCount % 10 == 0) {
+
+			if (moveLeft2 && randomDirection2 == 0) {
+				enemieMX3--;
+			}
+
+			if (moveRight2 && randomDirection2 == 1) {
+				enemieMX3++;
+			}
+
+			if (moveUp2 && randomDirection2 == 2) {
+				enemieMY3--;
+			}
+
+			if (moveDown2 && randomDirection2 == 3) {
+				enemieMY3++;
+			}
+		}
+
+		if (enemieMX4 - 1 > -1 && (maze[enemieMY4][enemieMX4 - 1] == 0 || maze[enemieMY4][enemieMX4 - 1] == 2)) {
+			moveLeft3 = true;
+		}
+
+		if (enemieMY4 - 1 > -1 && (maze[enemieMY4 - 1][enemieMX4] == 0 || maze[enemieMY4 - 1][enemieMX4] == 2)) {
+			moveUp3 = true;
+		}
+
+		if (enemieMX4 + 1 < 31 && (maze[enemieMY4][enemieMX4 + 1] == 0 || maze[enemieMY4][enemieMX4 + 1] == 2)) {
+			moveRight3 = true;
+		}
+
+		if (enemieMY4 + 1 < 21 && (maze[enemieMY4 + 1][enemieMX4] == 0 || maze[enemieMY4 + 1][enemieMX4] == 2)) {
+			moveDown3 = true;
+		}
+
+		if (frameCount % 10 == 0) {
+
+			if (moveLeft3 && randomDirection3 == 0) {
+				enemieMX4--;
+			}
+
+			if (moveRight3 && randomDirection3 == 1) {
+				enemieMX4++;
+			}
+
+			if (moveUp3 && randomDirection3 == 2) {
+				enemieMY4--;
+			}
+
+			if (moveDown3 && randomDirection3 == 3) {
+				enemieMY4++;
+			}
+		}
+
+		dead();
 	}
 
-	public void movementEnemie(int posX, int posY) {
+	/*
+	 * public void movementEnemie(int posX, int posY) {
+	 * 
+	 * boolean moveLeft = false; boolean moveRight = false; boolean moveUp = false;
+	 * boolean moveDown = false;
+	 * 
+	 * int randomDirection = (int) (Math.random() * 4);
+	 * 
+	 * if (posX - 1 > -1 && (maze[posY][posX - 1] == 0 || maze[posY][posX - 1] ==
+	 * 2)) {
+	 * 
+	 * moveLeft = true; }
+	 * 
+	 * if (posY - 1 > -1 && (maze[posY - 1][posX] == 0 || maze[posY - 1][posX] ==
+	 * 2)) {
+	 * 
+	 * moveUp = true; }
+	 * 
+	 * if (posX + 1 < 31 && (maze[posY][posX + 1] == 0 || maze[posY][posX + 1] ==
+	 * 2)) {
+	 * 
+	 * moveRight = true; }
+	 * 
+	 * if (posY + 1 < 21 && (maze[posY + 1][posX] == 0 || maze[posY + 1][posX] ==
+	 * 2)) {
+	 * 
+	 * moveDown = true; }
+	 * 
+	 * if (moveLeft && randomDirection == 0) {
+	 * 
+	 * posX--; }
+	 * 
+	 * if (moveRight && randomDirection == 1) {
+	 * 
+	 * posX++; } if (moveUp && randomDirection == 2) {
+	 * 
+	 * posY--; } if (moveDown && randomDirection == 3) {
+	 * 
+	 * posY++; }
+	 * 
+	 * }
+	 */
 
-		boolean moveLeft = false;
-		boolean moveRight = false;
-		boolean moveUp = false;
-		boolean moveDown = false;
+	public void dead() {
 
-		int randomDirection = (int) (Math.random() * 4);
+		if (enemieMX1 == pacmanMX && enemieMY1 == pacmanMY) {
 
-		if (posX - 1 > -1 && (maze[posY][posX - 1] == 0 || maze[posY][posX - 1] == 2)) {
-
-			moveLeft = true;
+			restart();
 		}
 
-		if (posY - 1 > -1 && (maze[posY - 1][posX] == 0 || maze[posY - 1][posX] == 2)) {
+		if (enemieMX2 == pacmanMX && enemieMY2 == pacmanMY) {
 
-			moveUp = true;
+			restart();
 		}
 
-		if (posX + 1 < 31 && (maze[posY][posX + 1] == 0 || maze[posY][posX + 1] == 2)) {
+	}
 
-			moveRight = true;
-		}
+	public void restart() {
 
-		if (posY + 1 < 21 && (maze[posY + 1][posX] == 0 || maze[posY + 1][posX] == 2)) {
-
-			moveDown = true;
-		}
-
-		if (moveLeft && randomDirection == 0) {
-
-			posX--;
-		}
-
-		if (moveRight && randomDirection == 1) {
-
-			posX++;
-		}
-		if (moveUp && randomDirection == 2) {
-
-			posY--;
-		}
-		if (moveDown && randomDirection == 3) {
-
-			posY++;
-		}
-
+		setup();
+		
 	}
 
 	public void keyPressed() {
 
-		// Movement
+		// PacMan movement
 
 		if (keyCode == LEFT) {
 			if (pacmanMX - 1 > -1 && (maze[pacmanMY][pacmanMX - 1] == 0 || maze[pacmanMY][pacmanMX - 1] == 2)) {

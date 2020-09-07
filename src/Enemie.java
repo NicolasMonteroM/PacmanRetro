@@ -75,5 +75,7 @@ public class Enemie {
 	public void vulnerable() {
 
 	}
+	
+	
 
 }
