@@ -7,6 +7,9 @@ public class BlackEnemie extends Enemie{
 	}
 
 	public void create(int posX, int posY) {
+		
+		app.fill(0);
+		app.ellipse( posX, posY, size, size);
 
 	}
 

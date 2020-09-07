@@ -8,5 +8,7 @@ public class WhiteEnemie extends Enemie{
 
 	public void create(int posX, int posY) {
 
+		app.fill(255);
+		app.ellipse( posX, posY, size, size);
 	}
 }

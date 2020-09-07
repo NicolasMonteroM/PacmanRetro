@@ -133,10 +133,10 @@ public class Main extends PApplet {
 		posEnemieY4 = enemieMY4 * 30;
 
 		pacman = new Pacman(this);
-		enemie1 = new Enemie(this, enemieMX1, enemieMY1);
-		enemie2 = new Enemie(this, enemieMX2, enemieMY2);
-		enemie3 = new Enemie(this, enemieMX3, enemieMY3);
-		enemie4 = new Enemie(this, enemieMX4, enemieMY4);
+		enemie1 = new BlackEnemie(this, enemieMX1, enemieMY1);
+		enemie2 = new GreenEnemie(this, enemieMX2, enemieMY2);
+		enemie3 = new OrangeEnemie(this, enemieMX3, enemieMY3);
+		enemie4 = new WhiteEnemie(this, enemieMX4, enemieMY4);
 
 		// grid
 		/*
@@ -177,14 +177,13 @@ public class Main extends PApplet {
 		pacman.create(posPacX + 15, posPacY + 15);
 
 		// Enemies creation
-		fill(255, 0, 0);
 
 		enemie1.create(posEnemieX1 + 15, posEnemieY1 + 15);
 		enemie2.create(posEnemieX2 + 15, posEnemieY2 + 15);
 		enemie3.create(posEnemieX3 + 15, posEnemieY3 + 15);
 		enemie4.create(posEnemieX4 + 15, posEnemieY4 + 15);
 
-		fill(255);
+
 
 		scoreNumber = -1;
 
@@ -196,12 +195,14 @@ public class Main extends PApplet {
 
 					scoreNumber++;
 				}
-
+				
+				
 				scoreString = Integer.toString(scoreNumber);
 				// println(scoreNumber);
 			}
 		}
 
+		fill(255);
 		textAlign(CENTER);
 		noStroke();
 		textFont(MagicHat);

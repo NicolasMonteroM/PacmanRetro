@@ -8,6 +8,8 @@ public class GreenEnemie extends Enemie{
 
 	public void create(int posX, int posY) {
 
+		app.fill(0, 200, 50);
+		app.ellipse( posX, posY, size, size);
 	}
 
 }
